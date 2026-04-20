@@ -12,13 +12,13 @@ const NotFoundPage = () => {
 
         <div className="relative z-10 max-w-3xl text-right">
           <p className="mb-3 text-lg font-semibold uppercase tracking-[0.28em] text-purple-500">
-            Oops!
+            Oops!!!
           </p>
           <h1 className="text-[50rem] font-bold leading-none text-purple-900 sm:text-[10rem]">
             404
           </h1>
           <p className="mt-4 text-lg leading-7 text-purple-600">
-            Something's missing! 
+            Something's missing.
           </p>
           <p className="mt-2 text-sm leading-4 text-purple-600">
             Page not found. The page you're looking for doesn't exist or has been moved.
