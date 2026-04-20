@@ -18,7 +18,7 @@ const NotFoundPage = () => {
             404
           </h1>
           <p className="mt-4 text-lg leading-7 text-purple-600">
-            Something's missing. 
+            Something's missing! 
           </p>
           <p className="mt-2 text-sm leading-4 text-purple-600">
             Page not found. The page you're looking for doesn't exist or has been moved.
