@@ -6,6 +6,7 @@
   import adidasSocks from '../assets/img/asocks.jpg';
   import pumaCap from '../assets/img/pm.jpg';
   import pumaSocks from '../assets/img/pms.jpg';
+  import headphonesImage from '../assets/img/headphones.jpg';
 
   const products = [
     {
@@ -103,6 +104,18 @@
 
       ],
     },
+    {
+      name: 'HeadPhones',
+      title: 'HeadPhones',
+      category: 'Electronics',
+      price: 'PHP 499',
+      stock: 'In stock',
+      image: headphonesImage,
+      content: [
+        'high-quality wireless headphones with noise cancellation and superior sound performance.',
+
+      ],
+    }
   ];
 
   export default products;

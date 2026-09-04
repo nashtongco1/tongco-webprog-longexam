@@ -6,6 +6,10 @@ import ProductPage from './pages/LandingPages/ProductPage';
 import HomePage from './pages/LandingPages/HomePage';
 import AboutPage from './pages/LandingPages/AboutPage';
 import ProductListPage from './pages/LandingPages/ProductListPage';
+import CartPage from './pages/LandingPages/CartPage';
+import OrdersPage from './pages/LandingPages/OrdersPage';
+import ProfilePage from './pages/LandingPages/ProfilePage';
+import AdminPage from './pages/LandingPages/AdminPage';
 
 // Auth Pages Structure
 import AuthLayout from './layouts/AuthLayout';
@@ -33,8 +37,24 @@ const routes = [
         element: <ProductListPage />,
       },
       {
-        path: 'products/:name',
+        path: 'products/:id',
         element: <ProductPage />,
+      },
+      {
+        path: 'cart',
+        element: <CartPage />,
+      },
+      {
+        path: 'orders',
+        element: <OrdersPage />,
+      },
+      {
+        path: 'profile',
+        element: <ProfilePage />,
+      },
+      {
+        path: 'admin',
+        element: <AdminPage />,
       },
     ],
   },

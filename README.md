@@ -1,194 +1,225 @@
-# CTWEBPGL Web Programming - Long Exam 1
+# Rushline Apparel
 
-This repository contains a React frontend built with Vite, React Router, and Tailwind CSS.
+Rushline Apparel is an e-commerce web application made for the Bulldogs Exchange frontend and backend integration activity.
 
-The current project is **BulldogEx Shop**, a low-fidelity e-commerce wireframe for campus products. It includes a full-width hero banner, product catalog cards, product detail pages, store information pages, shared layouts, and authentication screens.
+The project uses React for the frontend and Node.js, Express, and MongoDB for the backend. The frontend connects to the backend using REST API requests.
 
-## Tech Stack
+## Features
 
-- React 19
-- Vite
-- React Router DOM
-- Tailwind CSS 4
-- ESLint
+### Customer
 
-## Main Features
+* Register and log in
+* View products
+* Search products
+* Filter products by category
+* View product details and reviews
+* Add products to cart
+* Checkout orders
+* View orders
+* Add product reviews
+* Update profile
+* Change password
+* Log out
 
-- Full-width e-commerce hero section with background image overlay
-- Product listing page with reusable product cards
-- Product detail page with price, category, stock, description, and action buttons
-- Store-focused home, about, footer, and not found pages
-- Authentication pages for sign in and sign up
-- Shared layout, navbar, footer, and button components
+### Admin
 
-## Fork and Clone Instructions
+* Log in as admin
+* Add products
+* View and edit products
+* View customer orders
+* Confirm orders
+* Mark orders as ready for claiming
+* View and edit reviews
+* View users
+* Edit user information
+* Activate or deactivate user accounts
 
-Fork the original repository first on GitHub. This creates your own copy of the repository under your GitHub account.
+## Technologies Used
 
-After the repository is forked, clone your forked repository to your local device:
+### Frontend
 
-1. Go to the root folder where you want to save the project.
-2. Open that folder in **VS Code**.
-3. Open the **VS Code Terminal**.
-4. Run `git clone` using the URL of your forked repository:
+* React
+* React Router DOM
+* Vite
+* Tailwind CSS
+* Fetch API
+* Local Storage
 
-```bash
-git clone <forked-repository-url>
+### Backend
+
+* Node.js
+* Express
+* MongoDB
+* Mongoose
+* JSON Web Token (JWT)
+* bcryptjs
+* dotenv
+* cors
+* nodemon
+
+## Client and Server Connection
+
+The React frontend connects to the Express backend using the `fetch` API.
+
+The backend API starts with:
+
+```txt
+http://localhost:5000/api
 ```
 
-Example:
+Examples:
 
-```bash
-git clone https://github.com/your-username/surname-long-exam.git
+```txt
+/api/auth
+/api/products
+/api/orders
+/api/reviews
+/api/users
+/api/categories
+/api/suppliers
 ```
 
-After cloning the forked repository, go inside the cloned project folder:
+After login, the JWT token is saved in `localStorage`. The token is used when accessing protected pages such as cart, orders, profile, and admin features.
 
-```bash
-cd surname-long-exam
+Protected requests use:
+
+```txt
+Authorization: Bearer <token>
 ```
 
-## Project Setup
+The system also checks the user's role. Customers can only access customer features, while admins can access management features.
 
-Install dependencies inside the client app:
+## Project Structure
+
+```txt
+tongco-webprog-longexam/
+|-- README.md
+|-- package.json
+|-- server.js
+|-- createAdmin.js
+|-- seedProducts.js
+|
+|-- tongco-client/
+|   |-- src/
+|       |-- components/
+|       |-- layouts/
+|       |-- pages/
+|       |-- App.jsx
+|       |-- main.jsx
+|
+|-- tongco-server/
+    |-- config/
+    |-- controllers/
+    |-- middleware/
+    |-- models/
+    |-- routes/
+    |-- utils/
+```
+
+## Main API Endpoints
+
+### Authentication
+
+```txt
+POST /api/auth/register
+POST /api/auth/login
+```
+
+### Products
+
+```txt
+GET  /api/products
+GET  /api/products/:id
+POST /api/products
+PUT  /api/products/:id
+```
+
+### Orders
+
+```txt
+POST /api/orders/cart
+GET  /api/orders/cart
+POST /api/orders/checkout
+GET  /api/orders/my-orders
+GET  /api/orders
+PUT  /api/orders/:id/confirm
+PUT  /api/orders/:id/ready
+```
+
+### Reviews
+
+```txt
+GET  /api/reviews
+POST /api/reviews
+PUT  /api/reviews/:id
+```
+
+### Users
+
+```txt
+GET /api/users/profile
+PUT /api/users/profile
+PUT /api/users/change-password
+GET /api/users
+PUT /api/users/:id
+```
+
+## Error Handling
+
+The system handles common errors such as:
+
+* `400` - Invalid or missing information
+* `401` - User is not logged in or token is invalid
+* `403` - User does not have permission
+* `404` - Data was not found
+* `500` - Server or database error
+
+## How to Run
+
+### Backend
+
+Open the main project folder and run:
 
 ```bash
-cd surname-client
 npm install
-```
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
-Create a production build:
+Create a `.env` file:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+
+The backend will run on:
+
+```txt
+http://localhost:5000
+```
+
+### Frontend
+
+Open the `tongco-client` folder and run:
 
 ```bash
-npm run build
+npm install
+npm run dev
 ```
 
-Run linting:
+The frontend will usually run on:
 
-```bash
-npm run lint
+```txt
+http://localhost:5173
 ```
 
-## Push to GitHub Using Git Bash
+## Design Pattern
 
-Open **Git Bash** or **VS Code Terminal**, then go to the project root folder:
+The frontend uses React components. Pages and reusable parts such as the navbar, footer, buttons, and product cards are separated into different files.
 
-Example
-```bash
-cd /c/Users/ACER/Desktop/cy.dev/cy.dev.reactjs/course-material/webprog/long-exam1
-```
+The backend uses an MVC-like structure. Routes, controllers, models, middleware, configuration, and utilities are separated to keep the project organized.
 
-Check the files before committing:
+## Purpose
 
-```bash
-git status
-```
-
-If this folder is not yet a Git repository, initialize it:
-
-```bash
-git init
-```
-
-Stage, commit, and push the project:
-
-```bash
-git add .
-git commit -m "initial long-exam1"
-git push origin main
-```
-
-For future updates after editing files:
-
-```bash
-git status
-git add .
-git commit -m "enhanced long-exam1"
-git push
-```
-
-## Current Routes
-
-- `/` - Home page
-- `/about` - About page
-- `/products` - Product list page
-- `/products/:name` - Single product page
-- `/auth/signin` - Sign in page
-- `/auth/signup` - Sign up page
-
-## Key Files
-
-- `src/assets/product-content.js` - product data used by the catalog and product pages
-- `src/components/ProductCard.jsx` - reusable product card component
-- `src/components/ProductList.jsx` - product grid component
-- `src/pages/LandingPages/ProductListPage.jsx` - product catalog page
-- `src/pages/LandingPages/ProductPage.jsx` - single product detail page
-- `src/pages/LandingPages/HomePage.jsx` - landing page with full-width hero banner
-
-## Current File Structure
-
-```text
-long-exam1/
-├── README.md
-└── robles-client/
-    ├── .gitignore
-    ├── eslint.config.js
-    ├── index.html
-    ├── package-lock.json
-    ├── package.json
-    ├── public/
-    │   ├── favicon.svg
-    │   └── icons.svg
-    ├── vite.config.js
-    └── src/
-        ├── App.jsx
-        ├── main.jsx
-        ├── assets/
-        │   ├── hero.png
-        │   ├── product-content.js
-        │   ├── react.svg
-        │   ├── vite.svg
-        │   ├── img/
-        │   │   ├── nu_bulldogex_banner.jpg
-        │   │   └── nubdexchange_logo.png
-        │   └── styles/
-        │       └── index.css
-        ├── components/
-        │   ├── Button.jsx
-        │   ├── Footer.jsx
-        │   ├── NavBar.jsx
-        │   ├── ProductCard.jsx
-        │   └── ProductList.jsx
-        ├── layouts/
-        │   ├── AuthLayout.jsx
-        │   └── Layout.jsx
-        └── pages/
-            ├── NotFoundPage.jsx
-            ├── AuthPages/
-            │   ├── SignInPage.jsx
-            │   └── SignUpPage.jsx
-            └── LandingPages/
-                ├── AboutPage.jsx
-                ├── ProductListPage.jsx
-                ├── ProductPage.jsx
-                └── HomePage.jsx
-```
-
-## Notes
-
-- `node_modules/` and `dist/` are not included in the structure above because they are generated folders.
-- The application uses `Layout.jsx` for public pages and `AuthLayout.jsx` for authentication pages.
-- Product routes use the product `name` value from `product-content.js` as the URL slug.
-
-## Enhancement Instructions
-- Enhancement 1: Develop an original product catalog with appropriate product names, descriptions, prices, categories, and images.
-- Enhancement 2: Create a customized footer and notfoundpage that aligns with the website theme and ensure that all links function correctly.
-- Enhancement 3: Provide accessible navigation links for both Sign In and Sign Up pages.
-- Enhancement 4: Improve the overall visual design through consistent colors, typography, spacing, and imagery without changing the existing component order or page structure.
-- Enhancement 5: Research and apply a custom font to the web application using an appropriate implementation method.
+This project shows how a React frontend can connect to a Node.js and MongoDB backend. It also demonstrates authentication, user roles, API requests, database operations, and error handling.
